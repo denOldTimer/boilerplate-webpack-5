@@ -41,7 +41,7 @@ const CSSLoader = {
 };
 
 
-const FileLoader = {
+const ImageLoader = {
   test: /\.(png|jpe?g|gif)$/i,
   use: [
     {
@@ -61,5 +61,5 @@ const FileLoader = {
 module.exports = {
   JSLoader: JSLoader,
   CSSLoader: CSSLoader,
-  FileLoader: FileLoader,
+  FileLoader: ImageLoader,
 };

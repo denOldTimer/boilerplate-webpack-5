@@ -19,7 +19,7 @@ module.exports = {
     rules: [
       loaders.JSLoader,
       loaders.CSSLoader,
-      loaders.FileLoader,
+      loaders.ImageLoader,
     ]
   },
     
