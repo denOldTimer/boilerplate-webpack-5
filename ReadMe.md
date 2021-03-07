@@ -13,3 +13,28 @@ So thank you **Jon Torrado**.
 - [PostCSS](https://postcss.org/) with import and preset-env
 - [Stylelint](https://stylelint.io/) for CSS linting
 - [Clean Webpack Plugin](https://github.com/johnagan/clean-webpack-plugin), [CSSNANO](https://cssnano.co/), [File Loader](https://webpack.js.org/loaders/file-loader/), [MiniCssExtractPlugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) and some othe useful tools.
+
+## Tweaks
+
+- Renamed FileLoader to ImageLoader
+  - Modified the `webpack.common.js`
+  - Modified the `loaders.js`
+- Created an images directory `src/images`
+
+## Feature Templates, Images, Fonts
+
+- Created a new directory `src/templates`
+- Created a new file `index.html`
+- Installed a new plugin `html-webpack-plugin`
+- Added new plugin to `loaders.js`
+- Added css files `container.css` & `typography.css`
+- Added an image
+- Added a fonts directory `src/fonts`
+- Added fonts to the directory fonts, `Baloo 2` and `Fira Code`
+- Added the `FontsLoader`
+- Added the `HtmlWebPackPlugin` & `CopyPlugin`
+
+### Current issues
+
+- The injection of the js bundle is in the header, not where I wish it to be @ the footer
+- The non generic fonts `Baloo 2` & `Fira Code` do not want to display

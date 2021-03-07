@@ -1,0 +1,11 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-image: url(../images/wings.jpg);
+  background-size: contain;
+  background-attachment: fixed;
+  background-repeat: inherit;
+  background-position: center center;
+}
