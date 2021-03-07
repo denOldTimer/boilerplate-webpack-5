@@ -5,13 +5,18 @@ const webpack = require('webpack'); // to access built-in plugins
 
 
 module.exports = {
-  entry: [
-    path.resolve(__dirname, "../src/js/app.js")
-  ],
+  entry: {
+
+    index:[
+      path.resolve(__dirname, "../src/js/app.js"),
+      path.resolve(__dirname, "../src/css/app.css")
+    ],
+
+  },
     
   output: {
-    filename: "js/[name].bundle.js",
-    path: path.resolve(__dirname, "../../dist"),
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "../../dist/js"),
   },
   
   
@@ -19,16 +24,23 @@ module.exports = {
     rules: [
       loaders.JSLoader,
       loaders.CSSLoader,
+      loaders.HtmlLoader,
       loaders.ImageLoader,
+      loaders.FontsLoader,
     ]
   },
     
   
   plugins: [
     new webpack.ProgressPlugin(),
-    plugins.CleanWebpackPlugin,
+    plugins.CleanWebpackPlugin,  
+    plugins.CopyPlugin,
+    plugins.HtmlWebPackPlugin,      
     plugins.ESLintPlugin,
     plugins.StyleLintPlugin,
     plugins.MiniCssExtractPlugin,
+    
+    
+    
   ],
 };

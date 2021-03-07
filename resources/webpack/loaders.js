@@ -5,7 +5,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const JSLoader = {
   test: /\.js$/i,
-  exclude: /node_modules/,
+  exclude: [
+    path.resolve(__dirname, '/node_modules/'),
+  ],
   use: {
     loader: 'babel-loader',
     options: {
@@ -17,7 +19,9 @@ const JSLoader = {
 
 const CSSLoader = {
   test: /\.css$/i,
-  exclude: /node_modules/,
+  exclude: [
+    path.resolve(__dirname, '/node_modules/'),
+  ],
   use: [
     {
       loader: MiniCssExtractPlugin.loader,
@@ -40,26 +44,59 @@ const CSSLoader = {
   ],
 };
 
-
-const ImageLoader = {
-  test: /\.(png|jpe?g|gif)$/i,
+const HtmlLoader = {
+  test: /\.html$/,
+  exclude: [
+    path.resolve(__dirname, '/node_modules/'),
+  ],
   use: [
     {
-      loader: 'file-loader',
+      loader: "html-loader",
       options: {
-        outputPath: 'images',
-        publicPath: path.resolve(__dirname, 'dist/')
-      },
-    },
+        minimize: true
+      }
+    }
+  ]
+}
+
+
+const ImageLoader = {
+  test: /\.(svg|png|jpe?g|gif)$/i,
+  exclude: [
+    path.resolve(__dirname, '/node_modules/'),
+    [/fonts/],
   ],
+  use: [
+    {
+      loader: "file-loader",
+      options: {
+        name: "../../[path][name].[ext]",
+      }
+    }
+  ]
 };
 
-
-
+const FontsLoader = {
+  test: /\.(svg|eot|ttf|woff|woff2)$/,
+  exclude: [
+    path.resolve(__dirname, './node_modules'),
+    [/img/],
+  ],
+  use: [
+    {
+      loader: "file-loader",
+      options: {
+        name: "../../[path][name].[ext]",
+      }
+    }
+  ]
+};
 
 
 module.exports = {
   JSLoader: JSLoader,
   CSSLoader: CSSLoader,
-  FileLoader: ImageLoader,
+  HtmlLoader: HtmlLoader,
+  ImageLoader: ImageLoader,
+  FontsLoader: FontsLoader,
 };
